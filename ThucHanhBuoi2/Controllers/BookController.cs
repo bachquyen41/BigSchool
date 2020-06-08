@@ -61,7 +61,7 @@ namespace ThucHanhBuoi2.Controllers
             books.Add(new Book(2, "HTML & CSS Responsive Web Design cookbook", "Author Name Book 2", "/Content/Image/book2cover.png"));
             books.Add(new Book(3, "Professional APS.NET MVC5", " Author Name Book 2", "/Content/Image/book3cover.png"));
             Book book = new Book();
-            if(id==null)
+            if(id == null)
             {
                 HttpNotFound();
             }
