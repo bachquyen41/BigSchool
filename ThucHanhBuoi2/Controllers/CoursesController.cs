@@ -31,8 +31,15 @@ namespace ThucHanhBuoi2.Controllers
         }
         [Authorize]
         [HttpPost]
+           
         public ActionResult Create (CourseViewModel viewModel)
-        {
+        { 
+            if(!ModelState.IsValid)
+            {
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }  
+      
             var course = new Course
             {
                 LecturerID = User.Identity.GetUserId(),
@@ -44,5 +51,6 @@ namespace ThucHanhBuoi2.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        
     }
 } 
