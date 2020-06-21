@@ -31,7 +31,7 @@ namespace ThucHanhBuoi2.Controllers
         }
         [Authorize]
         [HttpPost]
-           
+         [ValidateAntiForgeryToken]  
         public ActionResult Create (CourseViewModel viewModel)
         { 
             if(!ModelState.IsValid)
@@ -46,6 +46,7 @@ namespace ThucHanhBuoi2.Controllers
                 DateTime = viewModel.GetDateTime(),
                 CategoryID = viewModel.Category,
                 Place = viewModel.Place
+               
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
